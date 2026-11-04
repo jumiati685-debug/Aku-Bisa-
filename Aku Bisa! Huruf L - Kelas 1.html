@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aku Bisa! Huruf L</title>
+<style>
+:root{--y:#FFD54A;--yl:#FFF3C4;--b:#6D4C2F;--bl:#A9784C;--ok:#3E9B4F;--no:#D9772B;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",sans-serif;background:var(--yl);color:var(--b);font-size:20px}
+.app{max-width:760px;margin:0 auto;padding:12px;min-height:100vh;display:flex;flex-direction:column}
+.dots{display:flex;gap:6px;justify-content:center;margin:4px 0 10px}
+.dots i{width:34px;height:10px;border-radius:6px;background:#E8D08A}.dots i.on{background:var(--b)}
+.slide{display:none;background:#fff;border:4px solid var(--b);border-radius:26px;padding:20px;flex:1;animation:pop .45s ease}
+.slide.show{display:block}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@keyframes wig{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+h1{font-size:2.2em;margin:.2em 0;text-align:center}h2{margin:.1em 0 .5em;text-align:center;font-size:1.5em}
+.big{font-size:4.5rem;text-align:center;animation:bob 2s infinite}
+.hero{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:3rem}
+.hero span{display:inline-block;animation:bob 2s infinite}.hero span:nth-child(2){animation-delay:.3s}.hero span:nth-child(3){animation-delay:.6s}.hero span:nth-child(4){animation-delay:.9s}
+.card{background:var(--yl);border-radius:18px;padding:12px 16px;margin:10px 0}
+.btn{font:inherit;background:var(--y);color:var(--b);border:3px solid var(--b);border-radius:16px;padding:8px 18px;cursor:pointer;box-shadow:0 4px 0 var(--b);margin:4px}
+.btn:active{transform:translateY(3px);box-shadow:none}.btn.sm{padding:4px 12px}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.syl{font-size:2rem;min-width:72px}
+.animals{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.an{background:var(--y);border:3px solid var(--b);border-radius:18px;text-align:center;padding:8px;cursor:pointer;font:inherit;color:var(--b)}
+.an:hover{animation:wig .6s}.an b{display:block;font-size:1.1em}.an span{font-size:2.6rem}
+.out{font-size:3rem;text-align:center;min-height:70px}
+.nav{display:flex;justify-content:space-between;margin-top:10px}
+.fb{margin-top:12px;padding:12px 16px;border-radius:16px;font-weight:700;display:none}
+.fb.ok{display:block;background:#DFF3E1;color:#1f6b2d;animation:pop .4s}.fb.no{display:block;background:#FFE7D1;color:#8a4310;animation:pop .4s}
+input.ans{font:inherit;font-size:1.6rem;width:150px;text-align:center;border:3px solid var(--b);border-radius:14px;padding:6px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0}
+.stars{font-size:2.6rem;text-align:center}
+p{line-height:1.5}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="dots" id="dots"></div>
+
+<!-- 1 Pembuka -->
+<section class="slide">
+  <div class="hero"><span>🐝</span><span>🐟</span><span>🕷️</span><span>🐬</span></div>
+  <h1>Aku Bisa!<br>Huruf L 🌟</h1>
+  <div class="card">
+    <p><b>Mata Pelajaran:</b> Bahasa Indonesia<br><b>Kelas:</b> 1 SD<br><b>Materi:</b> la, le, li, lo, lu</p>
+    <p><b>Namamu:</b> <input class="ans" id="nama" placeholder="Tulis namamu" style="width:200px;font-size:1.2rem"></p>
+  </div>
+  <p style="text-align:center">Ayo belajar bersama teman-teman binatang!</p>
+</section>
+
+<!-- 2 Tujuan -->
+<section class="slide">
+  <h2>🎯 Hari ini aku bisa…</h2>
+  <div class="card">👂 Menyimak cerita</div>
+  <div class="card">🔤 Mengenali dan mengeja <b>la, le, li, lo, lu</b></div>
+  <div class="card">🧩 Merangkai huruf menjadi suku kata</div>
+  <div class="card">✏️ Menulis suku kata yang diawali huruf <b>l</b></div>
+  <p style="text-align:center;font-size:1.3em"><b>Aku Bisa! 💪</b></p>
+</section>
+
+<!-- 3 Materi -->
+<section class="slide">
+  <h2>📖 Simak Cerita</h2>
+  <div class="card" id="story">
+    <p>Lebah Lina terbang tinggi. 🐝<br>Lele Lulu berenang di kolam. 🐟<br>Laba-laba Lola membuat jaring. 🕷️<br>Lumba-lumba Lilo melompat di laut. 🐬<br>Mereka berkata, “Aku bisa!”</p>
+  </div>
+  <div class="row"><button class="btn" onclick="say(document.getElementById('story').innerText)">🔊 Dengarkan Cerita</button></div>
+  <h2>🔤 Ayo Eja!</h2>
+  <div class="row" id="sylrow"></div>
+  <p style="text-align:center">Ketuk suku kata, lalu dengarkan!</p>
+  <h2>🐾 Binatang berawalan L</h2>
+  <div class="animals" id="animals"></div>
+</section>
+
+<!-- 4 Aktivitas -->
+<section class="slide">
+  <h2>🧩 Ayo Merangkai!</h2>
+  <div class="card">
+    <p style="text-align:center;margin:0">Pilih huruf vokal untuk digabung dengan <b>l</b></p>
+    <div class="out" id="comp">l + ? = ?</div>
+    <div class="row" id="vow"></div>
+  </div>
+  <h2>🎮 Lengkapi Kata</h2>
+  <div class="card">
+    <div class="out" id="wq" style="font-size:2.2rem"></div>
+    <div class="row" id="wopt"></div>
+    <div class="fb" id="wfb"></div>
+    <div class="row"><button class="btn sm" id="wnext" style="display:none" onclick="nextWord()">Lanjut ➡️</button></div>
+  </div>
+  <p style="text-align:center">✏️ Tulis di bukumu: <b>la le li lo lu</b></p>
+</section>
+
+<!-- 5 Kuis -->
+<section class="slide">
+  <h2 id="qh">📝 Kuis</h2>
+  <div id="qbox"></div>
+</section>
+
+<!-- 6 Refleksi -->
+<section class="slide">
+  <h2>🌈 Umpan Balik dan Refleksi</h2>
+  <div class="stars" id="stars">⭐⭐⭐</div>
+  <div class="card" id="result" style="text-align:center">Selesaikan kuis dulu ya!</div>
+  <h2 style="font-size:1.2em">Perasaanku hari ini:</h2>
+  <div class="row"><button class="btn" onclick="ref('Hebat! Kamu senang belajar. Teruskan ya! 🎉')">😄 Senang</button><button class="btn" onclick="ref('Tidak apa-apa. Kalau terus berlatih, kamu pasti bisa! 💛')">🙂 Biasa</button><button class="btn" onclick="ref('Jangan menyerah. Ayo ulangi pelan-pelan bersama guru! 🤝')">😕 Masih sulit</button></div>
+  <div class="card" id="refmsg" style="text-align:center;display:none"></div>
+  <p style="text-align:center">Aku bisa menyebut: la, le, li, lo, lu ✔️<br>Aku bisa merangkai suku kata ✔️</p>
+  <div class="row"><button class="btn" onclick="restart()">🔁 Ulangi</button></div>
+</section>
+
+<div class="nav"><button class="btn" id="prev">⬅️ Kembali</button><button class="btn" id="next">Lanjut ➡️</button></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.7;speechSynthesis.speak(u)}catch(e){}}
+const slides=[...document.querySelectorAll('.slide')];let cur=0;
+slides.forEach((_,i)=>$('dots').appendChild(document.createElement('i')));
+function go(n){cur=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('show',i===cur));[...$('dots').children].forEach((d,i)=>d.classList.toggle('on',i===cur));$('prev').style.visibility=cur?'visible':'hidden';$('next').style.visibility=cur<slides.length-1?'visible':'hidden';scrollTo(0,0);if(cur===5)showResult()}
+$('prev').onclick=()=>go(cur-1);$('next').onclick=()=>go(cur+1);
+
+['la','le','li','lo','lu'].forEach(s=>{const b=document.createElement('button');b.className='btn syl';b.textContent=s;b.onclick=()=>say(s);$('sylrow').appendChild(b)});
+[['🐝','Lebah','le-bah'],['🐟','Lele','le-le'],['🕷️','Laba-laba','la-ba-la-ba'],['🐬','Lumba-lumba','lum-ba-lum-ba'],['🐒','Lutung','lu-tung'],['🦡','Luwak','lu-wak']].forEach(a=>{const b=document.createElement('button');b.className='an';b.innerHTML=`<span>${a[0]}</span><b>${a[1]}</b><small>${a[2]}</small>`;b.onclick=()=>say(a[1]);$('animals').appendChild(b)});
+
+['a','e','i','o','u'].forEach(v=>{const b=document.createElement('button');b.className='btn syl';b.textContent=v;b.onclick=()=>{$('comp').innerHTML=`l + ${v} = <b>l${v}</b> ✨`;say('l'+v)};$('vow').appendChild(b)});
+
+const words=[{e:'🐝',q:'le + ___ = lebah',o:['bah','bih','boh'],a:'bah'},{e:'🐒',q:'lu + ___ = lutung',o:['tang','tung','ting'],a:'tung'},{e:'🕷️',q:'la + ba + la + ___ = laba-laba',o:['ba','bi','bu'],a:'ba'}];
+let wi=0;
+function nextWord(){wi=(wi+1)%words.length;showWord()}
+function showWord(){const w=words[wi];$('wq').innerHTML=`<div>${w.e}</div>${w.q}`;$('wfb').className='fb';$('wnext').style.display='none';$('wopt').innerHTML='';w.o.forEach(o=>{const b=document.createElement('button');b.className='btn syl';b.textContent=o;b.onclick=()=>{const f=$('wfb');if(o===w.a){f.className='fb ok';f.textContent='Hebat! Kamu pintar! 🎉';say(w.a);$('wnext').style.display='inline-block'}else{f.className='fb no';f.textContent='Hampir! Coba dengarkan lagi, kamu pasti bisa! 💪'}};$('wopt').appendChild(b)})}
+showWord();
+
+const Q=[
+['mc','Huruf l + a dibaca …',['la','li','lu'],0,'l dan a dibaca “la”.'],
+['mc','Huruf l + i dibaca …',['lo','li','le'],1,'l dan i dibaca “li”.'],
+['mc','Huruf l + u dibaca …',['lu','la','le'],0,'l dan u dibaca “lu”.'],
+['mc','Huruf l + o dibaca …',['lo','lu','li'],0,'l dan o dibaca “lo”.'],
+['mc','Huruf l + e dibaca …',['la','le','lo'],1,'l dan e dibaca “le”.'],
+['mc','🐝 Nama binatang ini …',['Kuda','Sapi','Lebah'],2,'Gambar itu lebah. Lebah diawali “le”.'],
+['mc','🕷️ Laba-laba diawali suku kata …',['la','li','lo'],0,'La-ba-la-ba diawali “la”.'],
+['mc','🐬 Lumba-lumba diawali suku kata …',['la','lu','le'],1,'Lum-ba-lum-ba diawali “lu”.'],
+['mc','🐟 Lele diawali suku kata …',['li','lo','le'],2,'Lele diawali “le”.'],
+['mc','Kata mana yang diawali huruf l?',['Meja','Lampu','Bola'],1,'Lampu diawali huruf l. Bola berakhir dengan “la”.'],
+['fill','🐝 le + ___ = lebah','bah','Le + bah = lebah.'],
+['fill','l + a = ___','la','l dan a digabung menjadi “la”.'],
+['fill','___ + u = lu (tulis hurufnya)','l','Huruf l + u dibaca “lu”.'],
+['fill','🐟 le + ___ = lele','le','Le + le = lele.'],
+['fill','🐬 lum + ba + lum + ___ = lumba-lumba','ba','Lum-ba-lum-ba.']
+];
+const P=['Hebat! Kamu pintar! 🎉','Keren sekali! ⭐','Betul! Aku bangga padamu! 👏','Pintar! Terus semangat! 🌟'];
+const M=['Tidak apa-apa, ayo coba lagi nanti. Kamu pasti bisa! 💪','Hampir benar! Terus belajar ya. 💛','Jangan menyerah, setiap hari kamu makin pintar! 🌱'];
+let qi=0,score=0,done=false;
+function showQ(){
+  if(qi>=Q.length){done=true;$('qh').textContent='🎊 Kuis selesai!';$('qbox').innerHTML=`<div class="big">🏆</div><p style="text-align:center">Nilaimu: <b>${score} dari ${Q.length}</b></p><div class="row"><button class="btn" onclick="go(5)">Lihat Refleksi ➡️</button></div>`;return}
+  const q=Q[qi];$('qh').textContent=`📝 Soal ${qi+1} dari ${Q.length}`;
+  let h=`<div class="card" style="font-size:1.3em">${q[1]}</div>`;
+  if(q[0]==='mc'){q[2].forEach((o,i)=>h+=`<button class="btn opt" onclick="ansMC(${i})">${'ABC'[i]}. ${o}</button>`)}
+  else h+=`<div class="row"><input class="ans" id="fi" autocomplete="off" autocapitalize="none"><button class="btn" onclick="ansFill()">Cek ✔️</button></div>`;
+  h+=`<div class="fb" id="qfb"></div><div class="row"><button class="btn" id="qn" style="display:none" onclick="qi++;showQ()">Soal berikutnya ➡️</button></div>`;
+  $('qbox').innerHTML=h;
+}
+function fin(ok,exp){const f=$('qfb');if(ok){score++;f.className='fb ok';f.textContent=P[qi%P.length]}else{f.className='fb no';f.textContent=exp+' '+M[qi%M.length]}$('qn').style.display='inline-block';document.querySelectorAll('.opt').forEach(b=>b.disabled=true);const fi=$('fi');if(fi)fi.disabled=true}
+function ansMC(i){fin(i===Q[qi][3],'Penjelasan: '+Q[qi][4]);}
+function ansFill(){const v=$('fi').value.trim().toLowerCase();if(!v)return;fin(v===Q[qi][2],'Jawaban yang benar: “'+Q[qi][2]+'”. '+Q[qi][3]);}
+showQ();
+
+function showResult(){
+  if(!done){$('stars').textContent='⭐';$('result').textContent='Selesaikan kuis dulu ya!';return}
+  const n=$('nama').value.trim()||'Teman';const s=score>=13?'⭐⭐⭐':score>=8?'⭐⭐':'⭐';$('stars').textContent=s;
+  $('result').innerHTML=`<b>${n}</b>, nilaimu ${score} dari ${Q.length}.<br>`+(score>=13?'Luar biasa! Kamu sudah mahir huruf L! 🎉':score>=8?'Bagus! Sedikit lagi kamu mahir! 👍':'Ayo berlatih lagi, kamu pasti bisa! 💪');
+}
+function ref(t){const r=$('refmsg');r.style.display='block';r.textContent=t}
+function restart(){qi=0;score=0;done=false;showQ();$('refmsg').style.display='none';go(0)}
+go(0);
+</script>
+</body>
+</html>
